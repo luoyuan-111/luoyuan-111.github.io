@@ -3,156 +3,886 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的GitHub项目</title>
+    <title>班级网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0366d6;
-            --dark: #24292e;
-            --light: #f6f8fa;
-            --border: #e1e4e8;
+            --primary: #4f46e5;
+            --secondary: #7c3aed;
+            --accent: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.5;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
             color: var(--dark);
-            background-color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
         }
-        
+
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
         }
-        
+
         header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 16px;
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .avatar {
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .about {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .schedule {
+            margin-bottom: 50px;
+        }
+
+        .schedule h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .schedule-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .members {
+            margin-bottom: 50px;
+        }
+
+        .members h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .member {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            margin: 0 auto 1rem;
-            background-color: #ddd;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid var(--light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: var(--primary);
+            color: var(--gray);
         }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+
+        .member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
-        
-        .subtitle {
-            font-size: 1.25rem;
-            color: #586069;
-            margin-bottom: 1.5rem;
+
+        .member p {
+            color: var(--gray);
+            font-style: italic;
         }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: background-color 0.2s;
-        }
-        
-        .btn:hover {
-            background-color: #0356b6;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .feature-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 1.5rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .feature-card h3 {
-            margin-bottom: 0.75rem;
-            color: var(--primary);
-        }
-        
+
         footer {
             text-align: center;
-            padding: 2rem 0;
-            color: #586069;
-            border-top: 1px solid var(--border);
+            padding: 30px;
+            background: var(--dark);
+            color: white;
+            border-radius: 16px;
+            margin-top: 20px;
         }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 1rem;
-            }
-            
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            color: var(--secondary);
+        }
+
+        /* 可编辑样式 */
+        .editable {
+            cursor: text;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 1em;
+        }
+
+        .editable:focus {
+            outline: none;
+            background-color: rgba(79, 70, 229, 0.1);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .editable::after {
+            content: "✎";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        .editable:hover::after {
+            opacity: 1;
+        }
+
+        /* 管理员区域 */
+        .admin-area {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .admin-btn {
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 密码模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .password-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+
+        .error-message {
+            color: #ef4444;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* 文件上传区域 */
+        .upload-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .upload-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-input, .form-textarea {
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .file-input {
+            padding: 10px;
+        }
+
+        .upload-btn {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background: var(--secondary);
+        }
+
+        .upload-status {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .status-success {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .status-error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .subtitle {
-                font-size: 1rem;
+                font-size: 1.2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .about {
+                padding: 25px;
+            }
+            
+            .schedule-table {
+                font-size: 0.9rem;
+            }
+            
+            .team-members {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- 管理员区域 -->
+        <div class="admin-area">
+            <div class="admin-btn" id="adminBtn">管理员登录</div>
+        </div>
+
         <header>
-            <div class="avatar">👨‍💻</div>
-            <h1>我的GitHub项目</h1>
-            <p class="subtitle">一个简洁的开源项目展示页面</p>
-            <a href="https://github.com/yourusername" class="btn">查看GitHub主页</a>
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1 class="editable" contenteditable="false">2023级计算机科学班</h1>
+            <p class="subtitle editable" contenteditable="false">团结 · 进取 · 创新 · 卓越</p>
+            <div>
+                <a href="#" class="btn">班级相册</a>
+                <a href="#" class="btn">课程资料</a>
+                <a href="#" class="btn">通知公告</a>
+            </div>
         </header>
-        
+
         <section class="features">
-            <div class="feature-card">
-                <h3>项目一</h3>
-                <p>项目一的简要描述，说明其主要功能和用途。</p>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="editable" contenteditable="false">课程安排</h3>
+                <p class="editable" contenteditable="false">查看最新的课程表、教学计划和考试安排</p>
             </div>
             
-            <div class="feature-card">
-                <h3>项目二</h3>
-                <p>项目二的简要描述，说明其主要功能和用途。</p>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3 class="editable" contenteditable="false">班级活动</h3>
+                <p class="editable" contenteditable="false">了解即将举行的班级活动、聚会和学术讲座</p>
             </div>
             
-            <div class="feature-card">
-                <h3>项目三</h3>
-                <p>项目三的简要描述，说明其主要功能和用途。</p>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="editable" contenteditable="false">班级成员</h3>
+                <p class="editable" contenteditable="false">认识我们的班级成员、班委和指导老师</p>
             </div>
         </section>
-        
+
+        <section class="about">
+            <h2>班级简介</h2>
+            <div class="about-content">
+                <p class="editable" contenteditable="false">2023级计算机科学班成立于2023年9月，由45名充满活力的学生组成。我们是一个团结友爱、积极进取的集体，致力于在计算机科学领域不断探索和创新。</p>
+                <p class="editable" contenteditable="false">班级成员来自全国各地，拥有不同的背景和专长，但我们共同的目标是成为未来的技术领军人才。在班主任李老师的带领下，我们积极参与各类学术竞赛和实践活动，取得了优异的成绩。</p>
+                <p class="editable" contenteditable="false">班级口号：代码改变世界，智慧创造未来！</p>
+            </div>
+        </section>
+
+        <section class="schedule">
+            <h2>课程表</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th class="editable" contenteditable="false">时间</th>
+                        <th class="editable" contenteditable="false">周一</th>
+                        <th class="editable" contenteditable="false">周二</th>
+                        <th class="editable" contenteditable="false">周三</th>
+                        <th class="editable" contenteditable="false">周四</th>
+                        <th class="editable" contenteditable="false">周五</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="editable" contenteditable="false">8:00-9:40</td>
+                        <td class="editable" contenteditable="false">数据结构</td>
+                        <td class="editable" contenteditable="false">操作系统</td>
+                        <td class="editable" contenteditable="false">算法分析</td>
+                        <td class="editable" contenteditable="false">计算机网络</td>
+                        <td class="editable" contenteditable="false">数据库原理</td>
+                    </tr>
+                    <tr>
+                        <td class="editable" contenteditable="false">10:00-11:40</td>
+                        <td class="editable" contenteditable="false">软件工程</td>
+                        <td class="editable" contenteditable="false">人工智能</td>
+                        <td class="editable" contenteditable="false">Web开发</td>
+                        <td class="editable" contenteditable="false">编译原理</td>
+                        <td class="editable" contenteditable="false">移动应用开发</td>
+                    </tr>
+                    <tr>
+                        <td class="editable" contenteditable="false">14:00-15:40</td>
+                        <td class="editable" contenteditable="false">实验课</td>
+                        <td class="editable" contenteditable="false">小组讨论</td>
+                        <td class="editable" contenteditable="false">项目实践</td>
+                        <td class="editable" contenteditable="false">学术讲座</td>
+                        <td class="editable" contenteditable="false">自主学习</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 文件上传区域 -->
+        <section class="upload-section">
+            <h2>文件上传</h2>
+            <form class="upload-form" id="uploadForm">
+                <div class="form-group">
+                    <label class="form-label">文件标题</label>
+                    <input type="text" class="form-input" id="fileTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">文件描述</label>
+                    <textarea class="form-textarea" id="fileDescription" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">选择文件</label>
+                    <input type="file" class="form-input file-input" id="fileInput" required>
+                </div>
+                
+                <button type="submit" class="upload-btn">提交审核</button>
+            </form>
+            
+            <div class="upload-status" id="uploadStatus"></div>
+        </section>
+
+        <section class="members">
+            <h2>班级成员</h2>
+            <div class="team-members">
+                <div class="member">
+                    <div class="member-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="editable" contenteditable="false">李老师</h3>
+                    <p class="editable" contenteditable="false">班主任</p>
+                </div>
+                
+                <div class="member">
+                    <div class="member-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="editable" contenteditable="false">张明</h3>
+                    <p class="editable" contenteditable="false">班长</p>
+                </div>
+                
+                <div class="member">
+                    <div class="member-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="editable" contenteditable="false">王芳</h3>
+                    <p class="editable" contenteditable="false">学习委员</p>
+                </div>
+                
+                <div class="member">
+                    <div class="member-img">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="editable" contenteditable="false">刘伟</h3>
+                    <p class="editable" contenteditable="false">文体委员</p>
+                </div>
+            </div>
+        </section>
+
         <footer>
-            <p>© 2023 我的GitHub项目 | 使用MIT许可证</p>
+            <p class="editable" contenteditable="false">© 2023 2023级计算机科学班 | 保留所有权利</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-qq"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+            </div>
+            <p class="editable" contenteditable="false">班级邮箱: class2023@example.com</p>
+            <p class="editable" contenteditable="false">班主任电话: 138-XXXX-XXXX</p>
         </footer>
     </div>
+
+    <!-- 密码模态框 -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 class="modal-title">管理员登录</h2>
+            <input type="password" class="password-input" id="passwordInput" placeholder="请输入管理员密码">
+            <button class="submit-btn" id="submitPassword">登录</button>
+            <div class="error-message" id="errorMessage">密码错误，请重试</div>
+        </div>
+    </div>
+
+    <script>
+        // 管理员密码（实际应用中应使用更安全的方式存储）
+        const ADMIN_PASSWORD = "class2025";
+        
+        // DOM元素
+        const adminBtn = document.getElementById('adminBtn');
+        const passwordModal = document.getElementById('passwordModal');
+        const closeModal = document.getElementById('closeModal');
+        const passwordInput = document.getElementById('passwordInput');
+        const submitPassword = document.getElementById('submitPassword');
+        const errorMessage = document.getElementById('errorMessage');
+        const uploadForm = document.getElementById('uploadForm');
+        const uploadStatus = document.getElementById('uploadStatus');
+        
+        // 管理员登录状态
+        let isAdminLoggedIn = false;
+        
+        // 打开密码模态框
+        adminBtn.addEventListener('click', () => {
+            passwordModal.style.display = 'flex';
+            passwordInput.focus();
+        });
+        
+        // 关闭模态框
+        closeModal.addEventListener('click', () => {
+            passwordModal.style.display = 'none';
+            errorMessage.style.display = 'none';
+            passwordInput.value = '';
+        });
+        
+        // 提交密码
+        submitPassword.addEventListener('click', () => {
+            const enteredPassword = passwordInput.value;
+            
+            if (enteredPassword === ADMIN_PASSWORD) {
+                isAdminLoggedIn = true;
+                passwordModal.style.display = 'none';
+                errorMessage.style.display = 'none';
+                passwordInput.value = '';
+                
+                // 启用所有可编辑区域
+                document.querySelectorAll('.editable').forEach(element => {
+                    element.contentEditable = 'true';
+                });
+                
+                // 更改管理员按钮文本
+                adminBtn.textContent = '管理员已登录';
+                adminBtn.style.background = 'var(--accent)';
+                
+                // 显示通知
+                showNotification('管理员登录成功，编辑功能已启用');
+            } else {
+                errorMessage.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        });
+        
+        // 文件上传处理
+        uploadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const fileTitle = document.getElementById('fileTitle').value;
+            const fileDescription = document.getElementById('fileDescription').value;
+            const fileInput = document.getElementById('fileInput');
+            
+            if (!fileTitle || !fileDescription || !fileInput.files[0]) {
+                showUploadStatus('请填写所有字段并选择文件', 'error');
+                return;
+            }
+            
+            // 模拟文件上传（实际应用中需要后端支持）
+            const fileName = fileInput.files[0].name;
+            const fileSize = (fileInput.files[0].size / 1024).toFixed(2) + ' KB';
+            
+            // 保存文件信息到本地存储
+            const fileData = {
+                title: fileTitle,
+                description: fileDescription,
+                fileName: fileName,
+                fileSize: fileSize,
+                timestamp: new Date().toLocaleString(),
+                status: 'pending' // 等待审核
+            };
+            
+            // 保存到本地存储
+            saveFileData(fileData);
+            
+            // 显示成功消息
+            showUploadStatus('文件已提交，等待管理员审核', 'success');
+            
+            // 重置表单
+            uploadForm.reset();
+        });
+        
+        // 保存文件数据到本地存储
+        function saveFileData(fileData) {
+            let files = JSON.parse(localStorage.getItem('classFiles')) || [];
+            files.push(fileData);
+            localStorage.setItem('classFiles', JSON.stringify(files));
+        }
+        
+        // 显示上传状态
+        function showUploadStatus(message, type) {
+            uploadStatus.textContent = message;
+            uploadStatus.className = 'upload-status';
+            
+            if (type === 'success') {
+                uploadStatus.classList.add('status-success');
+            } else if (type === 'error') {
+                uploadStatus.classList.add('status-error');
+            }
+            
+            uploadStatus.style.display = 'block';
+            
+            // 5秒后隐藏状态
+            setTimeout(() => {
+                uploadStatus.style.display = 'none';
+            }, 5000);
+        }
+        
+        // 显示通知
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.position = 'fixed';
+            notification.style.bottom = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = 'var(--accent)';
+            notification.style.color = 'white';
+            notification.style.padding = '10px 20px';
+            notification.style.borderRadius = '5px';
+            notification.style.zIndex = '1000';
+            notification.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 3000);
+        }
+        
+        // 保存编辑内容到本地存储
+        document.querySelectorAll('.editable').forEach(element => {
+            // 从本地存储恢复内容
+            const id = element.textContent.trim().replace(/\s+/g, '-').toLowerCase();
+            const savedContent = localStorage.getItem(id);
+            if (savedContent) {
+                element.textContent = savedContent;
+            }
+            
+            // 监听输入事件并保存
+            element.addEventListener('input', () => {
+                localStorage.setItem(id, element.textContent);
+            });
+            
+            // 添加提示
+            element.addEventListener('focus', () => {
+                element.title = "点击编辑内容";
+            });
+        });
+    </script>
 </body>
 </html>
