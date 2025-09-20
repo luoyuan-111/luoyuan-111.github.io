@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>班级网站</title>
+    <title>2024届02班班级网站</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -111,22 +111,6 @@
 
         .nav-link.active::after {
             width: 100%;
-        }
-
-        .admin-btn {
-            background: var(--accent);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
-        }
-
-        .admin-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
         }
 
         /* 页面内容区域 */
@@ -617,6 +601,104 @@
             line-height: 1.7;
         }
 
+        /* 文档页面样式 */
+        .documents-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .document-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .document-header {
+            padding: 25px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .document-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .document-title {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .document-body {
+            padding: 25px;
+        }
+
+        .document-info {
+            margin-bottom: 20px;
+        }
+
+        .document-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        .document-desc {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .action-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .action-btn.secondary {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
         /* 联系页面样式 */
         .contact-container {
             display: grid;
@@ -897,6 +979,10 @@
             .members-grid, .gallery-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .document-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -906,7 +992,7 @@
         <div class="navbar-container">
             <div class="logo">
                 <i class="fas fa-graduation-cap"></i>
-                <span>2023级计算机班</span>
+                <span>2024届02班</span>
             </div>
             
             <div class="nav-links">
@@ -914,18 +1000,17 @@
                 <a href="#" class="nav-link" data-page="about">班级简介</a>
                 <a href="#" class="nav-link" data-page="members">班级成员</a>
                 <a href="#" class="nav-link" data-page="gallery">班级相册</a>
+                <a href="#" class="nav-link" data-page="documents">班级文档</a>
                 <a href="#" class="nav-link" data-page="events">班级活动</a>
                 <a href="#" class="nav-link" data-page="contact">联系我们</a>
             </div>
-            
-            <div class="admin-btn" id="adminBtn">管理员登录</div>
         </div>
     </nav>
 
     <!-- 首页 -->
     <div class="page active" id="home">
         <section class="hero">
-            <h1>2023级计算机科学班</h1>
+            <h1>2024届02班</h1>
             <p class="subtitle">团结 · 进取 · 创新 · 卓越</p>
             <div class="hero-btns">
                 <button class="btn">
@@ -981,7 +1066,7 @@
             <section class="about-section">
                 <h2 class="section-title">班级简介</h2>
                 <div class="about-content">
-                    <p>2023级计算机科学班成立于2023年9月，由45名充满活力的学生组成。我们是一个团结友爱、积极进取的集体，致力于在计算机科学领域不断探索和创新。</p>
+                    <p>2024届02班成立于2024年9月，由45名充满活力的学生组成。我们是一个团结友爱、积极进取的集体，致力于在计算机科学领域不断探索和创新。</p>
                     <p>班级成员来自全国各地，拥有不同的背景和专长，但我们共同的目标是成为未来的技术领军人才。在班主任李老师的带领下，我们积极参与各类学术竞赛和实践活动，取得了优异的成绩。</p>
                     <p>班级口号：代码改变世界，智慧创造未来！</p>
                     
@@ -1014,7 +1099,7 @@
             <section class="about-section">
                 <h2 class="section-title">班级简介</h2>
                 <div class="about-content">
-                    <p>2023级计算机科学班是一个充满活力与创新精神的集体，成立于2023年9月。班级由45名来自全国各地的优秀学生组成，他们在计算机科学领域展现出卓越的潜力和热情。</p>
+                    <p>2024届02班是一个充满活力与创新精神的集体，成立于2024年9月。班级由45名来自全国各地的优秀学生组成，他们在计算机科学领域展现出卓越的潜力和热情。</p>
                     
                     <p>在班主任李教授的带领下，班级形成了"团结、进取、创新、卓越"的班风。我们不仅注重专业课程的学习，更鼓励学生参与科研项目、学科竞赛和创新实践活动。班级成员在ACM程序设计大赛、全国大学生创新创业大赛等多项赛事中屡获佳绩。</p>
                     
@@ -1024,7 +1109,7 @@
                     
                     <p>班级文化建设方面，我们定期组织团建活动、体育比赛和文艺晚会，增强班级凝聚力。班级公众号定期更新技术文章、学习资源和活动动态，成为同学们学习交流的重要平台。</p>
                     
-                    <p>未来，2023级计算机科学班将继续秉承"代码改变世界，智慧创造未来"的理念，培养更多具有国际视野和创新能力的计算机专业人才。</p>
+                    <p>未来，2024届02班将继续秉承"代码改变世界，智慧创造未来"的理念，培养更多具有国际视野和创新能力的计算机专业人才。</p>
                 </div>
             </section>
         </div>
@@ -1171,7 +1256,7 @@
                     <img src="https://picsum.photos/600/400?random=1" alt="班级活动" class="gallery-img">
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">开学典礼</h3>
-                        <p class="gallery-date">2023年9月1日</p>
+                        <p class="gallery-date">2024年9月1日</p>
                     </div>
                 </div>
                 
@@ -1179,7 +1264,7 @@
                     <img src="https://picsum.photos/600/400?random=2" alt="班级活动" class="gallery-img">
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">技术沙龙</h3>
-                        <p class="gallery-date">2023年10月15日</p>
+                        <p class="gallery-date">2024年10月15日</p>
                     </div>
                 </div>
                 
@@ -1187,7 +1272,7 @@
                     <img src="https://picsum.photos/600/400?random=3" alt="班级活动" class="gallery-img">
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">编程马拉松</h3>
-                        <p class="gallery-date">2023年11月5日</p>
+                        <p class="gallery-date">2024年11月5日</p>
                     </div>
                 </div>
                 
@@ -1195,7 +1280,7 @@
                     <img src="https://picsum.photos/600/400?random=4" alt="班级活动" class="gallery-img">
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">篮球比赛</h3>
-                        <p class="gallery-date">2023年12月10日</p>
+                        <p class="gallery-date">2024年12月10日</p>
                     </div>
                 </div>
                 
@@ -1203,7 +1288,7 @@
                     <img src="https://picsum.photos/600/400?random=5" alt="班级活动" class="gallery-img">
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">学术讲座</h3>
-                        <p class="gallery-date">2024年1月8日</p>
+                        <p class="gallery-date">2025年1月8日</p>
                     </div>
                 </div>
                 
@@ -1211,7 +1296,171 @@
                     <img src="https://picsum.photos/600/400?random=6" alt="班级活动" class="gallery-img">
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">团建活动</h3>
-                        <p class="gallery-date">2024年2月20日</p>
+                        <p class="gallery-date">2025年2月20日</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 文档页面 -->
+    <div class="page" id="documents">
+        <div class="container">
+            <h2 class="section-title">班级文档</h2>
+            <div class="documents-grid">
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="document-title">班级规章制度</h3>
+                    </div>
+                    <div class="document-body">
+                        <div class="document-meta">
+                            <span><i class="fas fa-user"></i> 班主任</span>
+                            <span><i class="fas fa-calendar"></i> 2024-09-01</span>
+                        </div>
+                        <div class="document-desc">
+                            本制度规定了班级成员的权利义务、学习纪律、行为规范等内容，是班级管理的基本依据。
+                        </div>
+                        <div class="document-actions">
+                            <a href="#" class="action-btn primary">
+                                <i class="fas fa-download"></i> 下载文档
+                            </a>
+                            <a href="#" class="action-btn secondary">
+                                <i class="fas fa-eye"></i> 在线预览
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3 class="document-title">学期课程安排</h3>
+                    </div>
+                    <div class="document-body">
+                        <div class="document-meta">
+                            <span><i class="fas fa-user"></i> 教务处</span>
+                            <span><i class="fas fa-calendar"></i> 2024-08-25</span>
+                        </div>
+                        <div class="document-desc">
+                            2024-2025学年第一学期课程安排表，包含所有课程的时间、地点和授课教师信息。
+                        </div>
+                        <div class="document-actions">
+                            <a href="#" class="action-btn primary">
+                                <i class="fas fa-download"></i> 下载文档
+                            </a>
+                            <a href="#" class="action-btn secondary">
+                                <i class="fas fa-eye"></i> 在线预览
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="document-title">竞赛报名指南</h3>
+                    </div>
+                    <div class="document-body">
+                        <div class="document-meta">
+                            <span><i class="fas fa-user"></i> 学习委员</span>
+                            <span><i class="fas fa-calendar"></i> 2024-10-10</span>
+                        </div>
+                        <div class="document-desc">
+                            本学期各类学科竞赛报名指南，包含报名时间、参赛要求和备赛资源等信息。
+                        </div>
+                        <div class="document-actions">
+                            <a href="#" class="action-btn primary">
+                                <i class="fas fa-download"></i> 下载文档
+                            </a>
+                            <a href="#" class="action-btn secondary">
+                                <i class="fas fa-eye"></i> 在线预览
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="document-title">学习资料合集</h3>
+                    </div>
+                    <div class="document-body">
+                        <div class="document-meta">
+                            <span><i class="fas fa-user"></i> 学习小组</span>
+                            <span><i class="fas fa-calendar"></i> 2024-11-15</span>
+                        </div>
+                        <div class="document-desc">
+                            本学期各门课程的学习资料合集，包含讲义、习题、参考书目和优秀作业范例。
+                        </div>
+                        <div class="document-actions">
+                            <a href="#" class="action-btn primary">
+                                <i class="fas fa-download"></i> 下载文档
+                            </a>
+                            <a href="#" class="action-btn secondary">
+                                <i class="fas fa-eye"></i> 在线预览
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="document-title">班级活动策划</h3>
+                    </div>
+                    <div class="document-body">
+                        <div class="document-meta">
+                            <span><i class="fas fa-user"></i> 文体委员</span>
+                            <span><i class="fas fa-calendar"></i> 2024-12-05</span>
+                        </div>
+                        <div class="document-desc">
+                            下学期班级活动策划方案，包含团建、学术沙龙、体育比赛等活动的详细安排。
+                        </div>
+                        <div class="document-actions">
+                            <a href="#" class="action-btn primary">
+                                <i class="fas fa-download"></i> 下载文档
+                            </a>
+                            <a href="#" class="action-btn secondary">
+                                <i class="fas fa-eye"></i> 在线预览
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="document-title">毕业要求说明</h3>
+                    </div>
+                    <div class="document-body">
+                        <div class="document-meta">
+                            <span><i class="fas fa-user"></i> 教务处</span>
+                            <span><i class="fas fa-calendar"></i> 2024-09-10</span>
+                        </div>
+                        <div class="document-desc">
+                            计算机专业毕业要求详细说明，包含学分要求、必修课程和毕业设计规范等内容。
+                        </div>
+                        <div class="document-actions">
+                            <a href="#" class="action-btn primary">
+                                <i class="fas fa-download"></i> 下载文档
+                            </a>
+                            <a href="#" class="action-btn secondary">
+                                <i class="fas fa-eye"></i> 在线预览
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1224,37 +1473,37 @@
             <h2 class="section-title">班级活动</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="event-date">2023年9月15日</div>
+                    <div class="event-date">2024年9月15日</div>
                     <h3 class="event-title">开学迎新会</h3>
                     <p class="event-desc">欢迎新同学加入班级大家庭，介绍班级规章制度，班主任寄语，同学自我介绍，破冰游戏增进了解。</p>
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="event-date">2023年10月10日</div>
+                    <div class="event-date">2024年10月10日</div>
                     <h3 class="event-title">技术沙龙：AI前沿</h3>
                     <p class="event-desc">邀请行业专家分享人工智能最新发展趋势，包括大语言模型、计算机视觉和强化学习等热门话题。</p>
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="event-date">2023年11月5日</div>
+                    <div class="event-date">2024年11月5日</div>
                     <h3 class="event-title">编程马拉松大赛</h3>
                     <p class="event-desc">24小时编程挑战赛，主题为"智慧校园解决方案"，班级成员组队参赛，最终评选出优秀项目。</p>
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="event-date">2023年12月15日</div>
+                    <div class="event-date">2024年12月15日</div>
                     <h3 class="event-title">学术交流会</h3>
                     <p class="event-desc">分享学习经验，讨论课程难点，优秀学生展示项目成果，促进班级学术氛围建设。</p>
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="event-date">2024年1月10日</div>
+                    <div class="event-date">2025年1月10日</div>
                     <h3 class="event-title">企业参观：科技公司</h3>
                     <p class="event-desc">参观本地知名科技企业，了解企业工作环境和技术栈，与工程师交流职业发展路径。</p>
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="event-date">2024年2月25日</div>
+                    <div class="event-date">2025年2月25日</div>
                     <h3 class="event-title">春季团建活动</h3>
                     <p class="event-desc">户外拓展训练，团队协作游戏，烧烤晚会，增强班级凝聚力和团队合作精神。</p>
                 </div>
@@ -1296,7 +1545,7 @@
                             </div>
                             <div class="contact-details">
                                 <h4>邮箱</h4>
-                                <p>class2023@university.edu</p>
+                                <p>class2024@university.edu</p>
                             </div>
                         </div>
                         
@@ -1306,7 +1555,7 @@
                             </div>
                             <div class="contact-details">
                                 <h4>微信公众号</h4>
-                                <p>CS-Class2023</p>
+                                <p>CS-Class2024</p>
                             </div>
                         </div>
                     </div>
@@ -1420,38 +1669,15 @@
             </div>
             
             <div class="copyright">
-                <p>© 2023 2023级计算机科学班 | 保留所有权利</p>
+                <p>© 2024 2024届02班 | 保留所有权利</p>
             </div>
         </div>
     </footer>
 
-    <!-- 密码模态框 -->
-    <div class="modal" id="passwordModal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <h2 class="modal-title">管理员登录</h2>
-            <input type="password" class="password-input" id="passwordInput" placeholder="请输入管理员密码">
-            <button class="submit-btn" id="submitPassword">登录</button>
-            <div class="error-message" id="errorMessage">密码错误，请重试</div>
-        </div>
-    </div>
-
     <script>
-        // 管理员密码
-        const ADMIN_PASSWORD = "class2023";
-        
         // DOM元素
-        const adminBtn = document.getElementById('adminBtn');
-        const passwordModal = document.getElementById('passwordModal');
-        const closeModal = document.getElementById('closeModal');
-        const passwordInput = document.getElementById('passwordInput');
-        const submitPassword = document.getElementById('submitPassword');
-        const errorMessage = document.getElementById('errorMessage');
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
-        
-        // 管理员登录状态
-        let isAdminLoggedIn = false;
         
         // 页面切换功能
         navLinks.forEach(link => {
@@ -1477,73 +1703,6 @@
                 window.scrollTo(0, 0);
             });
         });
-        
-        // 打开密码模态框
-        adminBtn.addEventListener('click', () => {
-            passwordModal.style.display = 'flex';
-            passwordInput.focus();
-        });
-        
-        // 关闭模态框
-        closeModal.addEventListener('click', () => {
-            passwordModal.style.display = 'none';
-            errorMessage.style.display = 'none';
-            passwordInput.value = '';
-        });
-        
-        // 提交密码
-        submitPassword.addEventListener('click', () => {
-            const enteredPassword = passwordInput.value;
-            
-            if (enteredPassword === ADMIN_PASSWORD) {
-                isAdminLoggedIn = true;
-                passwordModal.style.display = 'none';
-                errorMessage.style.display = 'none';
-                passwordInput.value = '';
-                
-                // 更改管理员按钮文本
-                adminBtn.textContent = '管理员已登录';
-                adminBtn.style.background = 'var(--accent)';
-                
-                // 显示通知
-                showNotification('管理员登录成功，编辑功能已启用');
-            } else {
-                errorMessage.style.display = 'block';
-                passwordInput.value = '';
-                passwordInput.focus();
-            }
-        });
-        
-        // 显示通知
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.textContent = message;
-            notification.style.position = 'fixed';
-            notification.style.bottom = '20px';
-            notification.style.right = '20px';
-            notification.style.backgroundColor = 'var(--accent)';
-            notification.style.color = 'white';
-            notification.style.padding = '12px 24px';
-            notification.style.borderRadius = '8px';
-            notification.style.zIndex = '1000';
-            notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
-            notification.style.opacity = '0';
-            notification.style.transform = 'translateY(20px)';
-            notification.style.transition = 'all 0.3s ease';
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.opacity = '1';
-                notification.style.transform = 'translateY(0)';
-            }, 10);
-            
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
         
         // 卡片悬停动画增强
         const cards = document.querySelectorAll('.card');
